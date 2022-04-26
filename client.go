@@ -38,7 +38,7 @@ type httpClientResponse struct {
 	Error  interface{}      `json:"error"`
 }
 
-func (client *Client) call(method string, params interface{}) (interface{}, error) {
+func (client *Client) Call(method string, params interface{}) (interface{}, error) {
 	req := &httpClientRequest{}
 	req.Method = method
 	req.Params[0] = params
