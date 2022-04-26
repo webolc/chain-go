@@ -33,7 +33,7 @@ type httpClientRequest struct {
 	ID     uint64         `json:"id"`
 }
 
-type httpClientResponse struct {
+type HttpClientResponse struct {
 	ID     uint64           `json:"id"`
 	Result *json.RawMessage `json:"result"`
 	Error  interface{}      `json:"error"`
@@ -53,7 +53,7 @@ func (client *Client) Call(method string, params interface{}) (interface{}, erro
 		return nil, err
 	}
 	defer postres.Body.Close()
-	res := &httpClientResponse{}
+	res := &HttpClientResponse{}
 	result, err := ioutil.ReadAll(postres.Body)
 	if err != nil {
 		return nil, err
