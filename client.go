@@ -3,6 +3,7 @@ package chaingo
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -46,7 +47,7 @@ func (client *Client) Call(method string, params interface{}) (interface{}, erro
 	if err != nil {
 		return nil, err
 	}
-	url := "http://" + client.host + ":" + string(client.port)
+	url := fmt.Sprintf("http://%s:%d", client.host, client.port)
 	postres, err := client.httpclient.Post(url, "application/json", bytes.NewBuffer(data))
 	if err != nil {
 		return nil, err
